@@ -18,7 +18,10 @@
         .catch(error => {
             console.error('Fetch error:', error);
             return [];
+
         });
+
+        
 }
 
 function loadInfoBoxes() {
@@ -30,6 +33,8 @@ function loadInfoBoxes() {
                 hotspot.innerHTML = `
                     <h3>${box.heading}</h3>
                     <p>${box.description}</p>
+                    <img src="images/${box.thumbnail}" alt="${box.heading} Image">
+                    
                     
                 `;
             }
