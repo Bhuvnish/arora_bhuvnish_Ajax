@@ -11,34 +11,31 @@
     });
   }
 
-  function loadInfoBoxes() {
-    fetch('https://swiftpixel.com/earbud/api/infoboxes')
-      .then(response => response.json())
-      .then(hotspots => {
-        console.log(hotspots);
+  function fetchInfoBoxes() {
+    
+    return fetch("https://swiftpixel.com/earbud/api/infoboxes")
+        .then(response => response.json())
+        .catch(error => {
+            console.error('Fetch error:', error);
+            return [];
+        });
+}
 
-        let ul = document.createElement("ul");
+function loadInfoBoxes() {
+    return fetchInfoBoxes().then(infoBoxes => {
+        infoBoxes.forEach((box, index) => {
+            const hotspot = document.getElementById(`hotspot-${index + 1}`);
 
-        hotspots.results.forEach(result => {
-
-          
-          const h2 = document.createElement("h2");
-          
-
-          const img  = document.createElement("img");
-          img.src = result.picture.thumbnail;
-
-          const p  = document.createElement("p");
-         
-
-          li.appendChild(p);
-          li.appendChild(img);
-          li.appendChild(h2);
-          ul.appendChild(li);
-      });
-      })
-      .catch(error => console.error(error));
-  }
+            if (hotspot) {
+                hotspot.innerHTML = `
+                    <h3>${box.heading}</h3>
+                    <p>${box.description}</p>
+                    
+                `;
+            }
+        });
+    });
+}
 
   // function getData() {
 
