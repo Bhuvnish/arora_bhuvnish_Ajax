@@ -5,30 +5,38 @@
   const materialTemplate = document.querySelector("#material-template");
   const materialList = document.querySelector("#material-list");
 
+// spiner code goes here
 
-
-
+// creating function
   document.addEventListener("DOMContentLoaded", function () {
     const spinnerContainer = document.getElementById("spinner-container");
-  
-    const spinner = `<svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-      viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
-      <path fill="#333" d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+  // svg code for spinner
+    const spinner = `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    preserveAspectRatio="xMidYMid"
+    style="background: none; display: block; shape-rendering: auto; width: 40px; height: 40px; margin: 8px auto;"
+  >
+    <circle cx="50" cy="50" fill="none" stroke="#3f3f3f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
       <animateTransform
-      attributeName="transform"
-      attributeType="XML"
-      type="rotate"
-      dur="1s"
-      from="0 50 50"
-      to="360 50 50"
-      repeatCount="indefinite" />
-      </path>
-      </svg>`;
+        attributeName="transform"
+        dur="1s"
+        keyTimes="0;0.4;0.8;1"
+        repeatCount="indefinite"
+        type="rotate"
+        values="0 50 50;0 50 50;360 50 50;360 50 50"
+      ></animateTransform>
+    </circle>
+  </svg>
+  `;
   
     spinnerContainer.innerHTML = spinner;
-  
+  //targating spinner on load
     window.addEventListener("load", function () {
-      // Remove the spinner once the page has fully loaded
+      
+
+
+      // by this spinner will be removed 
       spinnerContainer.innerHTML = "";
     });
   });
@@ -45,10 +53,10 @@
       hotspot.style.display = "block";
     });
   }
-
+// fetch api for hotspots
   function fetchInfoBoxes() {
     
-    return fetch("https://swiftpixel.com/earbud/api/infoboxes")
+    return fetch("https://swiftpixel.com/earbud/api/infoboxes")//promise
         .then(response => response.json())
         .catch(error => {
             console.error('Fetch error:', error);
@@ -58,7 +66,8 @@
 
         
 }
-
+// imformation for infoboxex or hotspots when hover target over here
+// image h and p tag target
 function loadInfoBoxes() {
     return fetchInfoBoxes().then(infoBoxes => {
         infoBoxes.forEach((box, index) => {
@@ -68,12 +77,14 @@ function loadInfoBoxes() {
                 hotspot.innerHTML = `
                     <h3>${box.heading}</h3>
                     <p>${box.description}</p>
-                    <img src="images/${box.thumbnail}" alt="${box.heading} Image">
+                    <img src="images/${box.thumbnail}" alt="${box.heading} Image"> 
                     
                     
                 `;
+                
             }
         });
+        
     });
 }
 
@@ -91,27 +102,6 @@ function loadInfoBoxes() {
 
   //       const li = document.createElement("li");
 
-  //       const h3 = document.createElement("h3");
-  //       h3.textContent = `${result.name.first} ${result.name.last}`;
-
-  //       const img  = document.createElement("img");
-  //       img.src = result.picture.thumbnail;
-
-  //       const p  = document.createElement("p");
-  //       p.textContent = result.email;
-
-  //       li.appendChild(p);
-  //       li.appendChild(img);
-  //       li.appendChild(h3);
-  //       ul.appendChild(li);
-  //   });
-  //   material-template.appendChild(ul);   
-
-  //   })
-  //   .catch(error => console.error(error)); //catch and report any errors
-  // }
-
-  // getData();
 
 
 
@@ -124,7 +114,7 @@ function loadInfoBoxes() {
 
 
 
-
+// mterial api target
 
 
   function loadMaterialInfo() {
