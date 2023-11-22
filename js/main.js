@@ -59,7 +59,7 @@
     return fetch("https://swiftpixel.com/earbud/api/infoboxes")//promise
         .then(response => response.json())
         .catch(error => {
-            console.error('Fetch error:', error);
+            console.error('error:', error);
             return [];
 
         });
