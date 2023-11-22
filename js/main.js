@@ -11,13 +11,8 @@
   document.addEventListener("DOMContentLoaded", function () {
     const spinnerContainer = document.getElementById("spinner-container");
   // svg code for spinner
-    const spinner = `<svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 100 100"
-    preserveAspectRatio="xMidYMid"
-    style="background: none; display: block; shape-rendering: auto; width: 40px; height: 40px; margin: 8px auto;"
-  >
-    <circle cx="50" cy="50" fill="none" stroke="#3f3f3f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+    const spinner = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none; display: block; shape-rendering: auto; width: 40px; height: 40px; margin: 8px auto;">
+    <circle cx="50" cy="50" fill="none" stroke="#3498db" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
       <animateTransform
         attributeName="transform"
         dur="1s"
@@ -88,29 +83,7 @@ function loadInfoBoxes() {
     });
 }
 
-  // function getData() {
-
-
-  //   fetch("https://swiftpixel.com/earbud/api/infoboxes")
-  //   .then(response => response.json())
-  //   .then(info => {
-  //     console.log(info);
-
-  //     let ul = document.createElement("ul");
-
-  //     info.results.forEach(result => {
-
-  //       const li = document.createElement("li");
-
-
-
-
-
-
-
-
-
-
+  
 
 
 
@@ -132,7 +105,8 @@ function loadInfoBoxes() {
           materialList.appendChild(clone);
         });
       })
-      .catch(error => console.error(error));//catch and report any errors
+      .catch(error => {console.error(error); errorMessage.textContent = " Please Try again later"});
+     
   }
 
   function showInfo() {
